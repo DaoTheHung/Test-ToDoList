@@ -23,8 +23,6 @@ function App() {
         <Container style={{ width: '104%' }}>
           <h1>New Task</h1>
           <TodoList />
-
-
         </Container>
       </contextTask.Provider>
     </div>

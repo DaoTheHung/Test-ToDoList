@@ -17,15 +17,8 @@ const NewTask = (props) => {
         if (checkJson !== null) setChecked(JSON.parse(checkJson))
     }, [])
 
-
-
-
     useEffect(() => {
-      
         window.localStorage.setItem('checked', JSON.stringify(theme.completed))
-       
-
-
     }, [theme.completed])
 
     const handelRemoveTask = () => {
@@ -35,13 +28,8 @@ const NewTask = (props) => {
         props.onEdit(props.id)
     }
     const handelClickChecked = () => {
-
         props.onClickChecked(props.id)
         theme.setCompleted(!theme.completed)
-
-        
-
-
     }
 
     return (
@@ -52,28 +40,16 @@ const NewTask = (props) => {
                     <FormGroup className='new_task' check>
                         <div className='title__new_task'>
                             <Input
-
                                 onClick={handelClickChecked}
                                 value={props.checked}
-                                
-
-
-
                                 id="checkbox2"
                                 type="checkbox"
                             />
-
-
                             {props.title}
                         </div>
-                            {props.priority}
-                       
-
-
-
-
+                        {props.priority}
                         <div className='btn__new_task'>
-                        {props.date} days left
+                            {props.date} days left
                             <Button onClick={handelEditTask} color="info">
                                 Detail
                             </Button>

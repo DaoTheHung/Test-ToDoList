@@ -46,25 +46,14 @@ const Todolist = () => {
         };
 
 
+        // phần sort console được
 
         const sort = todoList.sort(function (a, b) {
             return a.date - b.date
         })
-        console.log('sort:' , sort)
-        // window.localStorage.setItem('title', JSON.stringify(sort))
-
-        // setTodoList(sort)
+        console.log('sort:', sort)
 
     }, [dateT1]);
-
-
-
-
-
-
-
-
-
 
 
     useEffect(() => {
@@ -72,30 +61,16 @@ const Todolist = () => {
         const date = d.getDate()
         setDateT(date)
 
-
-
-
-
-
-
-
     }, [dateT])
-
-
 
     const d1 = new Date(dueDate);
     const date1 = d1.getDate()
-
-
-
-
-
 
     const [todoList, setTodoList] = useState([
         {
             id: 1,
             title: "Do homework",
-            checked:true    ,
+            checked: true,
             description: dateT,
             date: date1,
             priority: 'Normal',
@@ -195,11 +170,11 @@ const Todolist = () => {
         const searchTaskNew = [...todoList];
         setSearchTask(e.target.value)
 
-        if (!e.target.value) return (setTodoList(todoList1),  setSearchTask('') )
-        
-            const detailSearch = searchTaskNew.filter(item => (item.title.toLowerCase().includes(e.target.value.toLowerCase())));
-            setTodoList(detailSearch)
-        
+        if (!e.target.value) return (setTodoList(todoList1), setSearchTask(''))
+
+        const detailSearch = searchTaskNew.filter(item => (item.title.toLowerCase().includes(e.target.value.toLowerCase())));
+        setTodoList(detailSearch)
+
 
     }
     const handelClickChecked = (id) => {
