@@ -2,13 +2,14 @@ import React from 'react';
 import './TodoList.css';
 import { Container, Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 import NewTask from '../NewTask/NewTask';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { contextTask } from '../../App';
 import { v4 as id } from 'uuid';
 
 
 const Todolist = () => {
     const theme = useContext(contextTask);
+    const inputRef = useRef()
     // value task
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -89,9 +90,11 @@ const Todolist = () => {
     //add task
 
     const handelAddNewList = () => {
+
         if (!title) {
             return
         };
+        console.log(inputRef.current.focus())
         const newList = {
             id: id(),
             title,
@@ -109,6 +112,7 @@ const Todolist = () => {
         setDescription('');
         setDueDate('');
         setPriority('');
+        
 
         localStorage.setItem('title', JSON.stringify(newTodoList));
 
@@ -164,6 +168,7 @@ const Todolist = () => {
         setDescription('');
         setDueDate('');
         setPriority('Normal');
+        setBlockUpdate(!blockUpdate)
     }
     // search task
     const handelChangeSearchTask = (e) => {
@@ -203,16 +208,10 @@ const Todolist = () => {
 
         }
 
-
-
-
-
         setCheckedList(!checkedList)
-
-
-
-
     }
+
+    
 
 
 
@@ -222,7 +221,8 @@ const Todolist = () => {
             <div className='todo_list'>
                 <Container>
                     <Row className='content_all'>
-                        <Input
+                        <input className='ref_input'
+                            ref={inputRef}
                             value={title}
                             placeholder='Add new task...'
                             onChange={(e) => setTitle(e.target.value)}
