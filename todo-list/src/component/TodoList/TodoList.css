@@ -1,0 +1,22 @@
+.todo_list {
+    padding-bottom: 20px;
+}
+
+.textarea_todo_list {
+    border: 1px solid #95958e5e;
+    outline: none;
+}
+
+.content_all {
+    width: 100%;
+}
+
+.content__todo_list {
+
+    margin: 32px -2px 0px -23px;
+}
+
+.btn__todo_list {
+    width: 100%;
+    margin-top: 13px;
+}
